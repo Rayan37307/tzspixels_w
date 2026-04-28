@@ -89,6 +89,10 @@
 
   .glow-1 { @apply bg-accent-primary -top-24 -right-24; }
   .glow-2 { @apply bg-accent-secondary -bottom-24 -left-24; }
+
+  .glass-nav {
+    @apply bg-bg-primary/90 backdrop-blur-2xl border-b border-white/10;
+  }
 }
 
 @layer utilities {
