@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import AuraCursor from './components/AuraCursor';
 
 function App() {
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <div className="min-h-screen selection:bg-accent-primary selection:text-black">
+      <AuraCursor />
       <Navbar />
       <main>
         <Hero />
