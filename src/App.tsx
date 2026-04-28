@@ -10,6 +10,7 @@ import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import AuraCursor from './components/AuraCursor';
+import RobotShowcase from './components/RobotShowcase';
 
 function App() {
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
       <main>
         <Hero />
         <Stats />
+        <RobotShowcase />
         <Features />
         <HowItWorks />
         <Testimonials />
