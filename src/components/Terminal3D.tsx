@@ -1,7 +1,6 @@
-import { Suspense, useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Suspense, useState, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
 import { useGLTF, Center, PresentationControls, Environment, Float } from '@react-three/drei';
-import * as THREE from 'three';
 
 function Model(props: any) {
   const { scene } = useGLTF('/futuristic_free-standing_terminal.glb');
