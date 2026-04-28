@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Check } from 'lucide-react';
@@ -30,6 +30,8 @@ const Pricing = () => {
       isPopular: true,
     },
     {
+      name: 'ENTERPRISE',
+      desc: 'CUSTOM BUILT FOR SCALE',
       features: [
         'Everything in Growth',
         'Custom Next.js Store',
@@ -51,14 +53,13 @@ const Pricing = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 40 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.7,
-        ease: "easeOut"
+        duration: 0.7
       }
     }
   };

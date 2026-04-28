@@ -1,9 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Zap, Users, Box, CheckSquare, MessageSquare, Send, 
-  FileText, Image as ImageIcon, Layout, Globe, BarChart3, ShoppingCart
+  Zap, Box, Send, 
+  Image as ImageIcon, Layout, Globe, BarChart3, ShoppingCart
 } from 'lucide-react';
+import { cloneElement, type ReactElement } from 'react';
 
 const Features = () => {
   const features = [
@@ -67,7 +67,7 @@ const Features = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
@@ -113,7 +113,7 @@ const Features = () => {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 className="w-16 h-16 rounded-2xl glass flex items-center justify-center mb-8 border-2 border-white/10"
               >
-                {React.cloneElement(feature.icon as React.ReactElement, { size: 32 })}
+                {cloneElement(feature.icon as ReactElement, { size: 32 } as any)}
               </motion.div>
               
               <h3 className="text-xl font-black mb-4 transition-colors group-hover:text-accent-primary text-white leading-tight uppercase">

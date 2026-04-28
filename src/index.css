@@ -1,71 +1,110 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
 
-@layer base {
-  body {
-    @apply bg-bg-primary text-text-primary font-body overflow-x-hidden leading-relaxed;
-    background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-main font-black uppercase tracking-tighter;
-  }
+@theme {
+  --color-accent-primary: #a3ff12;
+  --color-accent-secondary: #00f2fe;
+  --color-bg-primary: #050505;
+  --color-bg-secondary: #0a0a0a;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1a1;
+  --color-border-color: rgba(255, 255, 255, 0.1);
+  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glow-cyan: rgba(0, 242, 254, 0.15);
+  --color-glow-lime: rgba(163, 255, 18, 0.15);
+  
+  --font-main: "Archivo Black", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
-@layer components {
-  .container {
-    @apply max-w-[1200px] mx-auto px-6;
-  }
-
-  .section-padding {
-    @apply py-24 md:py-32;
-  }
-
-  .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
-  }
-
-  .glass-card {
-    @apply bg-white/[0.02] border border-white/5 rounded-[2rem] transition-all duration-300;
-  }
-
-  .btn-primary {
-    @apply bg-accent-primary text-black py-4 px-8 rounded-full font-black flex items-center gap-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(163,255,18,0.4)];
-  }
-
-  .btn-secondary {
-    @apply border-2 border-white/10 text-white py-4 px-8 rounded-full font-bold flex items-center gap-2 transition-all duration-300 hover:bg-white/5;
-  }
-
-  .accent-gradient-text {
-    @apply bg-gradient-to-br from-accent-primary to-accent-secondary bg-clip-text text-transparent;
-  }
-
-  .popular-badge {
-    @apply absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20;
-  }
-
-  .ambient-glow {
-    @apply absolute w-[500px] h-[500px] rounded-full blur-[120px] -z-10 pointer-events-none opacity-40;
-  }
-
-  .glow-1 {
-    @apply bg-accent-primary -top-[100px] -right-[100px];
-  }
-
-  .glow-2 {
-    @apply bg-accent-secondary -bottom-[100px] -left-[100px];
-  }
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --accent-primary: #a3ff12;
+  --accent-secondary: #00f2fe;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1a1;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glow-cyan: rgba(0, 242, 254, 0.15);
+  --glow-lime: rgba(163, 255, 18, 0.15);
+  
+  --font-main: 'Archivo Black', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-@layer utilities {
-  .tracking-widest-plus {
-    letter-spacing: 0.3em;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  background-color: var(--bg-primary);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: var(--font-main);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Utilities */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-padding { padding: 100px 0; }
+@media (max-width: 768px) { .section-padding { padding: 60px 0; } }
+
+/* Colors & Effects */
+.glass { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 16px; }
+.glass-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; transition: all 0.3s ease; }
+.glass-card:hover { border-color: rgba(163, 255, 18, 0.3); transform: translateY(-5px); }
+
+.accent-gradient-text { background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.popular-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+
+/* Components */
+.btn-primary { background: var(--accent-primary); color: #000; padding: 12px 28px; border-radius: 50px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
+.btn-primary:hover { box-shadow: 0 0 25px rgba(163, 255, 18, 0.4); transform: scale(1.02); }
+.btn-secondary { border: 1px solid var(--glass-border); color: #fff; padding: 12px 28px; border-radius: 50px; font-weight: 500; transition: all 0.3s ease; }
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); }
+
+.ambient-glow { position: absolute; width: 500px; height: 500px; border-radius: 50%; filter: blur(120px); z-index: -1; pointer-events: none; opacity: 0.4; }
+.glow-1 { background: var(--accent-primary); top: -100px; right: -100px; }
+.glow-2 { background: var(--accent-secondary); bottom: -100px; left: -100px; }
