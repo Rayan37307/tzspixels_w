@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Terminal3D from './Terminal3D';
 
 const RobotShowcase = () => {
   return (
@@ -15,10 +16,10 @@ const RobotShowcase = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase mb-4">
-            MEET YOUR <span className="accent-gradient-text">AI ASSISTANT</span>
+            CENTRAL <span className="accent-gradient-text">TERMINAL</span>
           </h2>
           <p className="text-text-secondary text-sm md:text-base font-bold tracking-widest uppercase max-w-2xl mx-auto">
-            Our autonomous agents handle the heavy lifting while you scale.
+            The command center of your automated empire.
           </p>
         </motion.div>
 
@@ -29,23 +30,13 @@ const RobotShowcase = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative group"
         >
-          {/* Glass Container for the Iframe */}
-          <div className="glass p-4 md:p-8 rounded-[3rem] border-2 border-white/5 shadow-2xl relative bg-white/[0.01] backdrop-blur-sm overflow-hidden">
-            <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.15)] border border-white/10">
-              <iframe 
-                title="Ai Assistant Bot Poly-Art 3D Character Animated" 
-                className="w-full h-full"
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/6796271285b644d5820f200aac7cbb95/embed?autostart=1&camera=0&preload=1&transparent=1&ui_hint=0&ui_infos=0&ui_stop=0&ui_watermark=0"
-              >
-              </iframe>
-            </div>
+          {/* Glass Container for the Model */}
+          <div className="glass p-0 rounded-[3rem] border-2 border-white/5 shadow-2xl relative bg-white/[0.01] backdrop-blur-sm overflow-hidden min-h-[700px] flex items-center justify-center">
+            <Terminal3D />
+          </div>
 
             {/* Subtle Overlay Glow */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-bg-primary/40 to-transparent"></div>
-          </div>
 
           {/* Decorative Corner Accents */}
           <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-accent-primary rounded-tl-2xl"></div>
