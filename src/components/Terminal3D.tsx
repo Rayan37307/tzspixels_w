@@ -39,12 +39,12 @@ const Terminal3D = () => {
 
         <Suspense fallback={null}>
           <PresentationControls
-            speed={1.5}
+            speed={2.5}
             global
             zoom={1}
             polar={[-0.1, Math.PI / 4]}
           >
-            <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+            <Float speed={5} rotationIntensity={1} floatIntensity={1}>
               <Center>
                 <Model scale={getResponsiveScale()} />
               </Center>

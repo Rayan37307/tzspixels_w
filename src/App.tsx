@@ -11,6 +11,7 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import AuraCursor from './components/AuraCursor';
 import RobotShowcase from './components/RobotShowcase';
+import Preloader from './components/Preloader';
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <div className="min-h-screen selection:bg-accent-primary selection:text-black">
+      <Preloader />
       <AuraCursor />
       <Navbar />
       <main>
