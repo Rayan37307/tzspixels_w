@@ -91,7 +91,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-full left-0 w-full glass mt-2 p-6 flex flex-col gap-6 overflow-hidden"
+            className="lg:hidden absolute top-full left-0 w-full glass-nav mt-0 p-8 flex flex-col gap-6 overflow-hidden rounded-b-3xl shadow-2xl"
           >
             {navLinks.map((link) => (
               <a 

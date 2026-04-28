@@ -9,8 +9,8 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #a1a1a1;
   --color-border-color: rgba(255, 255, 255, 0.1);
-  --color-glass-bg: rgba(255, 255, 255, 0.03);
-  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
   --color-glow-cyan: rgba(0, 242, 254, 0.15);
   --color-glow-lime: rgba(163, 255, 18, 0.15);
   
@@ -27,8 +27,8 @@
     --text-primary: #ffffff;
     --text-secondary: #a1a1a1;
     --border-color: rgba(255, 255, 255, 0.1);
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
     --glow-cyan: rgba(0, 242, 254, 0.15);
     --glow-lime: rgba(163, 255, 18, 0.15);
   }
@@ -91,7 +91,7 @@
   .glow-2 { @apply bg-accent-secondary -bottom-24 -left-24; }
 
   .glass-nav {
-    @apply bg-bg-primary/90 backdrop-blur-2xl border-b border-white/10;
+    @apply bg-bg-primary/95 backdrop-blur-3xl border-b border-white/10;
   }
 }
 
