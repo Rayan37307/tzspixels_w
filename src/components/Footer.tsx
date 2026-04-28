@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-accent-primary rounded-xl flex items-center justify-center font-black text-black text-2xl shadow-[0_0_20px_rgba(163,255,18,0.4)]">T</div>
+              <div className="w-12 h-12 bg-accent-primary rounded-xl flex items-center justify-center font-black text-white text-2xl shadow-[0_0_20px_rgba(168,85,247,0.4)]">T</div>
               <span className="text-3xl font-black font-main text-white uppercase tracking-tighter">TZS PIXELS</span>
             </div>
             <p className="text-text-secondary text-sm mb-10 max-w-xs font-medium leading-relaxed">
@@ -21,7 +21,7 @@ const Footer = () => {
                 <motion.a 
                   key={i}
                   href="#" 
-                  whileHover={{ y: -5, backgroundColor: 'var(--accent-primary)', color: '#000' }}
+                  whileHover={{ y: -5, backgroundColor: 'var(--accent-primary)', color: '#fff' }}
                   className="w-12 h-12 glass flex items-center justify-center rounded-2xl transition-all text-white border-2 border-white/5"
                 >
                   <Icon size={20} />

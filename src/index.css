@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent-primary: #a3ff12;
-  --color-accent-secondary: #00f2fe;
+  --color-accent-primary: #a855f7;
+  --color-accent-secondary: #3b82f6;
   --color-bg-primary: #050505;
   --color-bg-secondary: #0a0a0a;
   --color-text-primary: #ffffff;
@@ -11,8 +11,8 @@
   --color-border-color: rgba(255, 255, 255, 0.1);
   --color-glass-bg: rgba(255, 255, 255, 0.05);
   --color-glass-border: rgba(255, 255, 255, 0.1);
-  --color-glow-cyan: rgba(0, 242, 254, 0.15);
-  --color-glow-lime: rgba(163, 255, 18, 0.15);
+  --color-glow-blue: rgba(59, 130, 246, 0.15);
+  --color-glow-violet: rgba(168, 85, 247, 0.15);
   
   --font-main: "Archivo Black", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -22,15 +22,15 @@
   :root {
     --bg-primary: #050505;
     --bg-secondary: #0a0a0a;
-    --accent-primary: #a3ff12;
-    --accent-secondary: #00f2fe;
+    --accent-primary: #a855f7;
+    --accent-secondary: #3b82f6;
     --text-primary: #ffffff;
     --text-secondary: #a1a1a1;
     --border-color: rgba(255, 255, 255, 0.1);
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --glow-cyan: rgba(0, 242, 254, 0.15);
-    --glow-lime: rgba(163, 255, 18, 0.15);
+    --glow-blue: rgba(59, 130, 246, 0.15);
+    --glow-violet: rgba(168, 85, 247, 0.15);
   }
 
   body {
@@ -73,7 +73,7 @@
   }
 
   .btn-primary {
-    @apply bg-accent-primary text-black px-7 py-3 rounded-full font-black text-xs tracking-widest flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(163,255,18,0.4)];
+    @apply bg-accent-primary text-white px-7 py-3 rounded-full font-black text-xs tracking-widest flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.4)];
   }
 
   .btn-secondary {
@@ -85,7 +85,7 @@
   }
 
   .popular-badge {
-    @apply absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-accent-primary text-black px-6 py-2 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_0_20px_rgba(163,255,18,0.5)];
+    @apply absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-accent-primary text-white px-6 py-2 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-[0_0_20px_rgba(168,85,247,0.5)];
   }
 
   .ambient-glow {

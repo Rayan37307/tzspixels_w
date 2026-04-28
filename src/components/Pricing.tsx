@@ -90,14 +90,14 @@ const Pricing = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className={`glass p-10 rounded-[2.5rem] relative flex flex-col pt-20 border-2 transition-all duration-300 ${plan.isPopular ? 'border-accent-primary shadow-[0_0_40px_rgba(163,255,18,0.1)]' : 'border-white/5 hover:border-white/20'}`}
+              className={`glass p-10 rounded-[2.5rem] relative flex flex-col pt-20 border-2 transition-all duration-300 ${plan.isPopular ? 'border-accent-primary shadow-[0_0_40px_rgba(168,85,247,0.1)]' : 'border-white/5 hover:border-white/20'}`}
             >
               {plan.isPopular && (
                 <motion.div 
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.3 }}
-                  className="popular-badge bg-accent-primary text-black text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full whitespace-nowrap shadow-[0_0_20px_rgba(163,255,18,0.5)]"
+                  className="popular-badge bg-accent-primary text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full whitespace-nowrap shadow-[0_0_20px_rgba(168,85,247,0.5)]"
                 >
                   MOST POPULAR
                 </motion.div>

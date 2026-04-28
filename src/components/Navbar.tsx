@@ -37,7 +37,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           className="flex items-center gap-2 cursor-pointer"
         >
-          <div className="w-10 h-10 bg-accent-primary rounded-lg flex items-center justify-center font-black text-black text-2xl shadow-[0_0_20px_rgba(163,255,18,0.5)]">T</div>
+          <div className="w-10 h-10 bg-accent-primary rounded-lg flex items-center justify-center font-black text-white text-2xl shadow-[0_0_20px_rgba(168,85,247,0.5)]">T</div>
           <span className="text-2xl font-black tracking-tighter font-main text-white uppercase">Tzs Pixels</span>
         </motion.div>
 
@@ -69,7 +69,7 @@ const Navbar = () => {
             <span>WATCH DEMO</span>
           </motion.button>
           <motion.button 
-            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(163,255,18,0.5)" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(168,85,247,0.5)" }}
             whileTap={{ scale: 0.95 }}
             className="btn-primary flex items-center gap-2 py-2.5 px-6 text-xs font-black tracking-widest"
           >

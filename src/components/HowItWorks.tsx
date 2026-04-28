@@ -51,7 +51,7 @@ const HowItWorks = () => {
               </div>
               
               <div className="glass p-10 rounded-3xl relative z-10 h-full border-2 border-white/5 hover:border-accent-primary transition-all group">
-                <div className="w-16 h-16 bg-accent-primary text-black rounded-2xl flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform shadow-[0_0_20px_rgba(163,255,18,0.4)]">
+                <div className="w-16 h-16 bg-accent-primary text-white rounded-2xl flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform shadow-[0_0_20px_rgba(168,85,247,0.4)]">
                   {step.number}
                 </div>
                 <h3 className="text-2xl font-black mb-6 leading-tight text-white uppercase italic tracking-tighter">

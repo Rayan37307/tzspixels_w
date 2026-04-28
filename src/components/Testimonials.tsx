@@ -43,7 +43,7 @@ const Testimonials = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
               >
-                <Star size={24} fill="var(--accent-primary)" stroke="none" className="drop-shadow-[0_0_10px_rgba(163,255,18,0.5)]" />
+                <Star size={24} fill="var(--accent-primary)" stroke="none" className="drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
               </motion.div>
             ))}
           </div>
@@ -67,7 +67,7 @@ const Testimonials = () => {
               </p>
               
               <div className="flex items-center gap-5">
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-accent-primary shadow-[0_0_15px_rgba(163,255,18,0.3)]">
+                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-accent-secondary shadow-[0_0_15px_rgba(59,130,246,0.3)]">
                   <img src={t.img} alt={t.name} className="w-full h-full object-cover" />
                 </div>
                 <div>

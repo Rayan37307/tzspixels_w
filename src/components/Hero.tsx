@@ -54,7 +54,7 @@ const Hero = () => {
         >
           <motion.span 
             variants={itemVariants}
-            className="inline-block px-5 py-2 mb-8 text-[10px] font-black tracking-[0.2em] uppercase border-2 rounded-full border-accent-primary bg-accent-primary/10 text-accent-primary shadow-[0_0_15px_rgba(163,255,18,0.2)]"
+            className="inline-block px-5 py-2 mb-8 text-[10px] font-black tracking-[0.2em] uppercase border-2 rounded-full border-accent-primary bg-accent-primary/10 text-accent-primary shadow-[0_0_15px_rgba(168,85,247,0.2)]"
           >
             eCommerce Growth & AI Automation
           </motion.span>
@@ -78,7 +78,7 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-col md:flex-row items-center justify-center gap-6"
           >
-            <button className="btn-primary px-10 py-5 text-lg group font-black tracking-widest shadow-[0_0_30px_rgba(163,255,18,0.3)]">
+            <button className="btn-primary px-10 py-5 text-lg group font-black tracking-widest shadow-[0_0_30px_rgba(168,85,247,0.3)]">
               <FaWhatsapp size={24} className="group-hover:rotate-12 transition-transform" />
               <span>WHATSAPP US NOW</span>
             </button>
