@@ -1,4 +1,4 @@
-import { Suspense, useRef } from 'react';
+import { Suspense, useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Center, PresentationControls, Environment, Float } from '@react-three/drei';
 import * as THREE from 'three';
@@ -9,8 +9,28 @@ function Model(props: any) {
 }
 
 const Terminal3D = () => {
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const getResponsiveScale = () => {
+    if (windowWidth < 640) return 0.15; // Mobile
+    if (windowWidth < 1024) return 0.22; // Tablet
+    return 0.3; // Desktop
+  };
+
+  const getResponsiveHeight = () => {
+    if (windowWidth < 640) return '400px';
+    if (windowWidth < 1024) return '550px';
+    return '700px';
+  };
+
   return (
-    <div className="w-full h-[700px] cursor-grab active:cursor-grabbing">
+    <div className="w-full cursor-grab active:cursor-grabbing" style={{ height: getResponsiveHeight() }}>
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 15], fov: 35 }}>
         <color attach="background" args={['#050505']} />
         
@@ -22,12 +42,12 @@ const Terminal3D = () => {
           <PresentationControls
             speed={1.5}
             global
-            zoom={0.8}
+            zoom={1}
             polar={[-0.1, Math.PI / 4]}
           >
             <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
               <Center>
-                <Model scale={6} />
+                <Model scale={getResponsiveScale()} />
               </Center>
             </Float>
           </PresentationControls>

@@ -31,7 +31,7 @@ const RobotShowcase = () => {
           className="relative group"
         >
           {/* Glass Container for the Model */}
-          <div className="glass p-0 rounded-[3rem] border-2 border-white/5 shadow-2xl relative bg-white/[0.01] backdrop-blur-sm overflow-hidden min-h-[700px] flex items-center justify-center">
+          <div className="glass p-0 rounded-[3rem] border-2 border-white/5 shadow-2xl relative bg-white/[0.01] backdrop-blur-sm overflow-hidden min-h-[400px] flex items-center justify-center">
             <Terminal3D />
           </div>
 
