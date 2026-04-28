@@ -117,13 +117,6 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      <style dangerouslySetInnerHTML={{ __html: `
-        .glass-nav {
-          background: rgba(5, 5, 5, 0.9);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-      `}} />
     </motion.nav>
   );
 };
