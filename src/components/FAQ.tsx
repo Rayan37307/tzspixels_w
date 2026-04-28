@@ -5,35 +5,42 @@ import { Plus, Minus } from 'lucide-react';
 const FAQ = () => {
   const faqs = [
     {
-      q: 'Tzs Pixels কি ছোট ব্যবসার জন্য?',
-      a: 'হ্যাঁ, একদম! আমরা মূলত ছোট ও মাঝারি ব্যবসার (SME) কাজের চাপ কমানোর জন্যই এই প্ল্যাটফর্মটি তৈরি করেছি।',
+      q: 'IS TZS PIXELS FOR SMALL BUSINESSES?',
+      a: 'Absolutely. We specialize in helping SMEs automate repetitive tasks and scale their revenue through high-impact marketing and custom tech.',
     },
     {
-      q: 'আমার পেজ / সিস্টেম কানেক্ট করতে কত সময় লাগে?',
-      a: 'সাধারণত ৫-১০ মিনিটের মধ্যেই আপনি আপনার ফেসবুক পেজ বা হোয়াটসঅ্যাপ কানেক্ট করে অটোমেশন শুরু করতে পারেন।',
+      q: 'HOW LONG DOES SETUP TAKE?',
+      a: 'Standard automation and store integrations usually take 5-10 days. Custom eCommerce builds typically take 3-4 weeks depending on complexity.',
     },
     {
-      q: 'বাংলা ভাষায় কি সাপোর্ট পাবো?',
-      a: 'অবশ্যই! আমাদের AI এজেন্ট বাংলা এবং ইংরেজি—উভয় ভাষাতেই কথা বলতে এবং কাস্টমার হ্যান্ডেল করতে সক্ষম।',
+      q: 'DO YOU PROVIDE GLOBAL SUPPORT?',
+      a: 'Yes. Our AI agents and support teams handle brands across multiple timezones and languages, ensuring 24/7 coverage.',
     },
     {
-      q: 'প্রাইসিং কিভাবে কাজ করে?',
-      a: 'আপনার ব্যবসার প্রয়োজন এবং টিমের সদস্য সংখ্যার ওপর ভিত্তি করে আমাদের বিভিন্ন প্ল্যান রয়েছে। বিস্তারিত জানতে আমাদের হোয়াটসঅ্যাপ করুন।',
+      q: 'HOW DOES THE PRICING WORK?',
+      a: 'We offer tiered subscription plans based on your brand size and requirements. Custom projects are quoted based on the scope of work.',
     },
     {
-      q: 'আমার ডাটা কি সিকিউর থাকবে?',
-      a: 'হ্যাঁ, আমরা আপনার ডাটা সিকিউরিটিকে সর্বোচ্চ গুরুত্ব দেই। আপনার সব ডাটা এনক্রিপ্টেড থাকে এবং আমরা কোনো থার্ড পার্টিকে ডাটা শেয়ার করি না।',
+      q: 'IS MY DATA SECURE?',
+      a: 'Security is our top priority. All data is encrypted and we strictly adhere to global privacy standards. Your business data is never shared.',
     },
   ];
 
   return (
-    <section className="section-padding">
-      <div className="container max-w-3xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">সাধারণ কিছু প্রশ্ন</h2>
-        </div>
+    <section className="section-padding bg-bg-primary">
+      <div className="container max-w-4xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-5xl md:text-7xl font-black mb-6 text-white italic tracking-tighter uppercase">QUESTIONS?</h2>
+          <p className="text-text-secondary text-lg font-medium">Everything you need to know about scaling with us.</p>
+        </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {faqs.map((faq, index) => (
             <FAQItem key={index} q={faq.q} a={faq.a} />
           ))}
@@ -47,13 +54,13 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="glass border-glass-border overflow-hidden rounded-2xl">
+    <div className="glass border-2 border-white/5 overflow-hidden rounded-3xl transition-all hover:border-white/10">
       <button 
-        className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+        className="w-full p-8 text-left flex items-center justify-between hover:bg-white/5 transition-all"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-bold text-lg text-white">{q}</span>
-        {isOpen ? <Minus size={20} className="text-accent-primary" /> : <Plus size={20} className="text-text-secondary" />}
+        <span className="font-black text-xl text-white italic tracking-tighter uppercase">{q}</span>
+        {isOpen ? <Minus size={24} className="text-accent-primary" /> : <Plus size={24} className="text-text-secondary" />}
       </button>
       
       <AnimatePresence>
@@ -64,7 +71,7 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="p-6 pt-0 text-text-secondary leading-relaxed border-t border-glass-border">
+            <div className="p-8 pt-0 text-text-secondary leading-relaxed font-medium border-t-2 border-white/5">
               {a}
             </div>
           </motion.div>

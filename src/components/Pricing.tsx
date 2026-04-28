@@ -6,92 +6,133 @@ import { Check } from 'lucide-react';
 const Pricing = () => {
   const plans = [
     {
-      name: 'Starter Plan',
-      desc: 'নতুন ব্যবসার জন্য',
+      name: 'STARTER',
+      desc: 'FOR GROWING BRANDS',
       features: [
         'AI Support Agent',
-        'Comment & Inbox Automation',
-        'WhatsApp / SMS Agent (Basic)',
-        'Stock & Task Automation',
-        '৫টি পর্যন্ত টিম মেম্বার',
+        'Inbox Automation',
+        'Shopify/WP Setup',
+        'Stock Automation',
+        'Up to 5 Team Members',
       ],
       isPopular: false,
     },
     {
-      name: 'Growth Plan',
-      desc: 'সবচেয়ে উন্নত সমাধান',
+      name: 'GROWTH',
+      desc: 'MOST ADVANCED SOLUTION',
       features: [
-        'Starter এর সব ফিচার',
-        'Advanced Analytics',
-        '১৫টি পর্যন্ত টিম মেম্বার',
+        'Everything in Starter',
+        'Performance Ads Support',
         'Custom Workflow Builder',
+        'Advanced Analytics',
         'Priority Support',
       ],
       isPopular: true,
     },
     {
-      name: 'Pro / Agency Plan',
-      desc: 'বড় টিমের জন্য',
       features: [
-        'Growth এর সব ফিচার',
-        'Unlimited Team Members',
-        'White-label Options',
-        'Dedicated Account Manager',
+        'Everything in Growth',
+        'Custom Next.js Store',
+        'Full Brand Nurturing',
+        'Dedicated Manager',
         'Custom Integration',
       ],
       isPopular: false,
     },
   ];
 
-  return (
-    <section id="pricing" className="section-padding">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">আপনার গ্রোথের সাথে স্কেল হবে প্রাইসিং</h2>
-          <p className="text-text-secondary text-lg">আপনার ব্যবসার জন্য সঠিক প্ল্যান বেছে নিন।</p>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  return (
+    <section id="pricing" className="section-padding bg-bg-secondary/30">
+      <div className="container">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-5xl md:text-7xl font-black mb-6 text-white italic tracking-tighter uppercase">PRICING PLANS</h2>
+          <p className="text-text-secondary text-lg font-medium">Choose the powerhouse plan for your brand.</p>
+        </motion.div>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {plans.map((plan, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`glass p-8 rounded-3xl relative flex flex-col pt-16 ${plan.isPopular ? 'border-accent-primary' : 'border-glass-border'}`}
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+              className={`glass p-10 rounded-[2.5rem] relative flex flex-col pt-20 border-2 transition-all duration-300 ${plan.isPopular ? 'border-accent-primary shadow-[0_0_40px_rgba(163,255,18,0.1)]' : 'border-white/5 hover:border-white/20'}`}
             >
               {plan.isPopular && (
-                <div className="popular-badge bg-accent-primary text-black text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full whitespace-nowrap">
-                  সবচেয়ে জনপ্রিয়
-                </div>
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.3 }}
+                  className="popular-badge bg-accent-primary text-black text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full whitespace-nowrap shadow-[0_0_20px_rgba(163,255,18,0.5)]"
+                >
+                  MOST POPULAR
+                </motion.div>
               )}
 
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-2 text-white">{plan.name}</h3>
-                <p className="text-text-secondary text-sm">{plan.desc}</p>
+              <div className="mb-10">
+                <h3 className="text-4xl font-black mb-3 text-white italic tracking-tighter">{plan.name}</h3>
+                <p className="text-text-secondary text-xs font-black tracking-widest uppercase">{plan.desc}</p>
               </div>
 
               <div className="flex-1">
-                <ul className="space-y-4 mb-10">
+                <ul className="space-y-5 mb-12">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm">
-                      <div className="mt-1 bg-accent-primary/10 rounded-full p-0.5 flex items-center justify-center">
-                        <Check size={14} className="text-accent-primary" />
+                    <motion.li 
+                      key={i} 
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 + (i * 0.1) }}
+                      className="flex items-start gap-4 text-sm font-semibold"
+                    >
+                      <div className="mt-1 bg-accent-primary/20 rounded-lg p-1 flex items-center justify-center">
+                        <Check size={16} className="text-accent-primary" />
                       </div>
-                      <span className="text-text-secondary">{feature}</span>
-                    </li>
+                      <span className="text-text-secondary group-hover:text-white transition-colors">{feature}</span>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
 
-              <button className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold transition-all ${plan.isPopular ? 'btn-primary' : 'glass border-glass-border hover:border-white'}`}>
-                <FaWhatsapp size={18} />
-                <span>WhatsApp এ কথা বলুন</span>
+              <button className={`w-full flex items-center justify-center gap-3 py-5 rounded-2xl font-black text-xs tracking-[0.2em] uppercase transition-all ${plan.isPopular ? 'btn-primary' : 'glass border-2 border-white/10 hover:border-white text-white'}`}>
+                <FaWhatsapp size={20} />
+                <span>WHATSAPP US</span>
               </button>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

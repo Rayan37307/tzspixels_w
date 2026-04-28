@@ -4,67 +4,123 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    }
+  };
+
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
+    <section className="relative pt-40 pb-24 overflow-hidden">
       {/* Background Glows */}
-      <div className="ambient-glow glow-1"></div>
-      <div className="ambient-glow glow-2"></div>
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.4, 0.2]
+        }}
+        transition={{ duration: 10, repeat: Infinity }}
+        className="ambient-glow glow-1"
+      ></motion.div>
+      <motion.div 
+        animate={{ 
+          scale: [1.2, 1, 1.2],
+          opacity: [0.4, 0.2, 0.4]
+        }}
+        transition={{ duration: 10, repeat: Infinity }}
+        className="ambient-glow glow-2"
+      ></motion.div>
 
       <div className="container relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider uppercase border rounded-full border-glass-border glass text-accent-primary">
-            প্রথম AI অটোমেশন প্ল্যাটফর্ম
-          </span>
+          <motion.span 
+            variants={itemVariants}
+            className="inline-block px-5 py-2 mb-8 text-[10px] font-black tracking-[0.2em] uppercase border-2 rounded-full border-accent-primary bg-accent-primary/10 text-accent-primary shadow-[0_0_15px_rgba(163,255,18,0.2)]"
+          >
+            eCommerce Growth & AI Automation
+          </motion.span>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-white">
-            আপনার পুরো ব্যবসা চালান <br />
-            <span className="accent-gradient-text">Tzs Pixels</span> দিয়ে, অটো-পাইলটে।
-          </h1>
+          <motion.h1 
+            variants={itemVariants}
+            className="text-6xl md:text-8xl font-black mb-8 leading-[0.9] text-white uppercase italic tracking-tighter"
+          >
+            SCALE YOUR BRAND <br />
+            ON <span className="accent-gradient-text">AUTOPILOT.</span>
+          </motion.h1>
           
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-text-secondary mb-10 leading-relaxed">
-            টিম ম্যানেজমেন্ট, স্টক ট্র্যাকিং, টাস্ক, কনটেন্ট, কমেন্ট আর SMS রিপ্লাই—সব কিছুই এখন এক প্ল্যাটফর্মে অটোমেশন।
-          </p>
+          <motion.p 
+            variants={itemVariants}
+            className="max-w-3xl mx-auto text-lg md:text-xl text-text-secondary mb-12 leading-relaxed font-medium"
+          >
+            Custom eCommerce sites, Shopify mastery, High-ROI Ads, and AI-driven automation. Everything your brand needs to dominate the market—unified in one powerhouse platform.
+          </motion.p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-            <button className="btn-primary px-8 py-4 text-lg">
-              <FaWhatsapp size={22} />
-              <span>এখনই WhatsApp এ কথা বলুন</span>
+          <motion.div 
+            variants={itemVariants}
+            className="flex flex-col md:flex-row items-center justify-center gap-6"
+          >
+            <button className="btn-primary px-10 py-5 text-lg group font-black tracking-widest shadow-[0_0_30px_rgba(163,255,18,0.3)]">
+              <FaWhatsapp size={24} className="group-hover:rotate-12 transition-transform" />
+              <span>WHATSAPP US NOW</span>
             </button>
-            <button className="btn-secondary px-8 py-4 text-lg flex items-center gap-2">
-              <span>ফ্রি কনসাল্টেশন</span>
-              <ArrowRight size={20} />
+            <button className="btn-secondary px-10 py-5 text-lg flex items-center gap-2 group font-bold tracking-widest border-2">
+              <span>FREE CONSULTATION</span>
+              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </button>
-          </div>
+          </motion.div>
 
-          <div className="mt-12 flex items-center justify-center gap-2 text-sm text-text-secondary">
-            <div className="flex -space-x-2 items-center">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-8 h-8 rounded-full border-2 border-bg-primary bg-white/5 flex items-center justify-center overflow-hidden">
-                  <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="user" className="w-full h-full object-cover" />
-                </div>
+          <motion.div 
+            variants={itemVariants}
+            className="mt-16 flex flex-col items-center gap-4 text-xs font-bold tracking-widest text-text-secondary uppercase"
+          >
+            <div className="flex -space-x-3 items-center">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <motion.div 
+                  key={i} 
+                  whileHover={{ y: -8, zIndex: 10, scale: 1.1 }}
+                  className="w-10 h-10 rounded-full border-2 border-accent-primary bg-bg-primary flex items-center justify-center overflow-hidden cursor-pointer"
+                >
+                  <img src={`https://i.pravatar.cc/100?img=${i + 15}`} alt="user" className="w-full h-full object-cover" />
+                </motion.div>
               ))}
             </div>
-            <span>ইতোমধ্যে ৯০+ ব্যবসা মালিক Tzs Pixels ব্যবহার করছেন।</span>
-          </div>
+            <span>Trusted by 90+ high-scale eCommerce brands</span>
+          </motion.div>
         </motion.div>
 
         {/* Live Status Indicator */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="mt-16 inline-flex items-center gap-4 px-6 py-3 glass rounded-2xl border border-glass-border"
+          transition={{ delay: 1.2, duration: 0.5 }}
+          className="mt-20 inline-flex items-center gap-4 px-8 py-4 glass rounded-full border-2 border-white/10"
         >
           <div className="relative flex items-center justify-center">
             <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
             <div className="absolute inset-0 w-3 h-3 bg-red-500 rounded-full animate-ping opacity-75"></div>
           </div>
-          <span className="text-sm font-medium text-white">AI Agent এখনই কাস্টমারকে রিপ্লাই দিচ্ছে…</span>
-          <span className="px-2 py-0.5 bg-red-500/10 text-red-500 text-xs font-bold rounded uppercase tracking-wider">লাইভ</span>
+          <span className="text-xs font-black tracking-[0.2em] text-white uppercase">AI Agents active: Handling 42 live customers</span>
+          <span className="px-3 py-1 bg-red-500 text-white text-[10px] font-black rounded-full uppercase tracking-widest">LIVE</span>
         </motion.div>
       </div>
     </section>
