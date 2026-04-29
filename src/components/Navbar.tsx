@@ -38,7 +38,7 @@ const Navbar = () => {
           className="flex items-center gap-2 cursor-pointer"
         >
           <div className="w-10 h-10 bg-accent-primary rounded-lg flex items-center justify-center font-black text-white text-2xl shadow-[0_0_20px_rgba(168,85,247,0.5)]">T</div>
-          <span className="text-2xl font-black tracking-tighter font-main text-white uppercase">Tzs Pixels</span>
+          <span className={`text-2xl font-black tracking-tighter font-main uppercase transition-colors duration-300 ${scrolled ? 'text-white' : 'text-black'}`}>Tzs Pixels</span>
         </motion.div>
 
         {/* Desktop Nav */}
@@ -50,7 +50,7 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i + 0.3 }}
-              className="text-xs font-bold text-text-secondary hover:text-accent-primary transition-colors relative group tracking-widest"
+              className={`text-xs font-bold transition-colors relative group tracking-widest ${scrolled ? 'text-text-secondary hover:text-accent-primary' : 'text-black/60 hover:text-accent-primary'}`}
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-primary transition-all group-hover:w-full"></span>
@@ -63,7 +63,7 @@ const Navbar = () => {
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 text-xs font-bold hover:text-accent-primary transition-colors text-white tracking-widest"
+            className={`flex items-center gap-2 text-xs font-bold transition-colors tracking-widest ${scrolled ? 'text-white hover:text-accent-primary' : 'text-black hover:text-accent-primary'}`}
           >
             <PlayCircle size={18} />
             <span>WATCH DEMO</span>
@@ -79,7 +79,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
+        <button className={`lg:hidden transition-colors ${scrolled ? 'text-white' : 'text-black'}`} onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
