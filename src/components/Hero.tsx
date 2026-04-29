@@ -28,33 +28,40 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col pt-32 pb-20 overflow-hidden bg-white">
+    <section className="relative min-h-screen overflow-hidden bg-[#E3E3E3]">
       {/* Spline 3D Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <Spline 
-          scene="https://prod.spline.design/c7f07lhjJKcnmVp1/scene.splinecode" 
-          className="w-full h-full"
-        />
+      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+          className="w-full h-auto md:scale-100 scale-100 flex items-center justify-center"
+        >
+          <Spline 
+            scene="https://prod.spline.design/c7f07lhjJKcnmVp1/scene.splinecode" 
+            className="w-full h-auto"
+          />
+        </motion.div>
       </div>
 
-      <div className="container relative z-10 flex-1 flex flex-col justify-between py-6">
+      <div className="container relative z-10 h-screen pointer-events-none">
         {/* Top Left Block */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-left max-w-md pt-4"
+          className="absolute top-32 left-6 md:left-12 text-left max-w-[200px] md:max-w-md pointer-events-auto"
         >
           <motion.span 
             variants={itemVariants}
-            className="inline-block px-3 py-1 mb-4 text-[8px] font-black tracking-[0.2em] uppercase border rounded-full border-accent-primary bg-accent-primary/10 text-accent-primary"
+            className="inline-block px-2 py-0.5 mb-2 text-[6px] md:text-[8px] font-black tracking-[0.2em] uppercase border rounded-full border-accent-primary bg-accent-primary/10 text-accent-primary"
           >
-            eCommerce Growth & AI Automation
+            AI AUTOMATION
           </motion.span>
           
           <motion.h1 
             variants={itemVariants}
-            className="text-2xl md:text-4xl font-black mb-4 leading-tight text-black uppercase italic tracking-tighter"
+            className="text-sm md:text-2xl font-black mb-2 leading-tight text-black uppercase italic tracking-tighter"
           >
             SCALE YOUR BRAND <br />
             ON <span className="accent-gradient-text">AUTOPILOT.</span>
@@ -66,45 +73,27 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="self-end text-right max-w-md flex flex-col items-end pb-4"
+          className="absolute bottom-12 right-6 md:right-12 text-right max-w-[250px] md:max-w-md flex flex-col items-end pointer-events-auto"
         >
           <motion.p 
             variants={itemVariants}
-            className="text-sm md:text-base text-black/70 mb-8 leading-relaxed font-medium"
+            className="text-[10px] md:text-sm text-black/70 mb-4 leading-relaxed font-medium"
           >
-            Custom eCommerce sites, Shopify mastery, High-ROI Ads, and AI-driven automation. Everything your brand needs to dominate the market.
+            Custom eCommerce sites, Shopify mastery, High-ROI Ads, and AI-driven automation. 
           </motion.p>
 
           <motion.div 
             variants={itemVariants}
-            className="flex flex-col md:flex-row items-center justify-end gap-4 w-full"
+            className="flex flex-col md:flex-row items-center justify-end gap-2 w-full"
           >
-            <button className="btn-primary px-6 py-3 text-[10px] group font-black tracking-widest shadow-[0_0_20px_rgba(168,85,247,0.15)]">
-              <FaWhatsapp size={18} className="group-hover:rotate-12 transition-transform" />
-              <span>WHATSAPP US</span>
+            <button className="btn-primary px-4 py-2 text-[8px] group font-black tracking-widest">
+              <FaWhatsapp size={14} />
+              <span>WHATSAPP</span>
             </button>
-            <button className="btn-secondary !text-black !border-black/10 px-6 py-3 text-[10px] flex items-center gap-2 group font-bold tracking-widest border hover:!bg-black/5">
-              <span>FREE CONSULTATION</span>
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <button className="btn-secondary !text-black !border-black/10 px-4 py-2 text-[8px] flex items-center gap-2 group font-bold tracking-widest border">
+              <span>CONSULT</span>
+              <ArrowRight size={14} />
             </button>
-          </motion.div>
-
-          <motion.div 
-            variants={itemVariants}
-            className="mt-8 flex flex-col items-end gap-3 text-[8px] font-bold tracking-widest text-black/60 uppercase"
-          >
-            <div className="flex -space-x-2 items-center">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <motion.div 
-                  key={i} 
-                  whileHover={{ y: -4, zIndex: 10, scale: 1.1 }}
-                  className="w-8 h-8 rounded-full border border-accent-primary bg-white flex items-center justify-center overflow-hidden cursor-pointer shadow-sm"
-                >
-                  <img src={`https://i.pravatar.cc/100?img=${i + 15}`} alt="user" className="w-full h-full object-cover" />
-                </motion.div>
-              ))}
-            </div>
-            <span>Trusted by 90+ brands</span>
           </motion.div>
 
           {/* Live Status Indicator */}
@@ -112,14 +101,10 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.2, duration: 0.5 }}
-            className="mt-8 inline-flex items-center gap-3 px-6 py-2 bg-white/50 backdrop-blur-md rounded-full border border-black/5 shadow-sm"
+            className="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-white/50 backdrop-blur-md rounded-full border border-black/5 shadow-sm"
           >
-            <div className="relative flex items-center justify-center">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-              <div className="absolute inset-0 w-2 h-2 bg-red-500 rounded-full animate-ping opacity-75"></div>
-            </div>
-            <span className="text-[8px] font-black tracking-[0.2em] text-black uppercase">42 Agents live</span>
-            <span className="px-2 py-0.5 bg-red-500 text-white text-[7px] font-black rounded-full uppercase tracking-widest">LIVE</span>
+            <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></div>
+            <span className="text-[6px] font-black tracking-[0.2em] text-black uppercase">42 Agents live</span>
           </motion.div>
         </motion.div>
       </div>
