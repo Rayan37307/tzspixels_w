@@ -36,8 +36,8 @@ const FAQ = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-7xl font-black mb-6 text-white italic tracking-tighter uppercase">QUESTIONS?</h2>
-          <p className="text-text-secondary text-lg font-medium">Everything you need to know about scaling with us.</p>
+          <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter uppercase">QUESTIONS?</h2>
+          <p className="text-zinc-500 text-lg font-medium">Everything you need to know about scaling with us.</p>
         </motion.div>
 
         <div className="space-y-6">
@@ -54,13 +54,13 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="glass border-2 border-white/5 overflow-hidden rounded-3xl transition-all hover:border-white/10">
+    <div className="bg-white border border-black/5 overflow-hidden rounded-3xl transition-all hover:border-black/10 shadow-sm">
       <button 
-        className="w-full p-8 text-left flex items-center justify-between hover:bg-white/5 transition-all"
+        className="w-full p-8 text-left flex items-center justify-between hover:bg-zinc-50 transition-all"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-black text-xl text-white italic tracking-tighter uppercase">{q}</span>
-        {isOpen ? <Minus size={24} className="text-accent-primary" /> : <Plus size={24} className="text-text-secondary" />}
+        <span className="font-black text-xl text-black italic tracking-tighter uppercase">{q}</span>
+        {isOpen ? <Minus size={24} className="text-black" /> : <Plus size={24} className="text-zinc-400" />}
       </button>
       
       <AnimatePresence>
@@ -71,7 +71,7 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="p-8 pt-0 text-text-secondary leading-relaxed font-medium border-t-2 border-white/5">
+            <div className="p-8 pt-0 text-zinc-600 leading-relaxed font-medium border-t border-black/5">
               {a}
             </div>
           </motion.div>

@@ -28,7 +28,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#E3E3E3]">
+    <section className="relative min-h-screen overflow-hidden bg-bg-primary">
       {/* Spline 3D Background */}
       <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
         <motion.div 
@@ -54,7 +54,7 @@ const Hero = () => {
         >
           <motion.span 
             variants={itemVariants}
-            className="inline-block px-2 py-0.5 mb-2 text-[6px] md:text-[8px] font-black tracking-[0.2em] uppercase border rounded-full border-accent-primary bg-accent-primary/10 text-accent-primary"
+            className="inline-block px-2 py-0.5 mb-2 text-[6px] md:text-[8px] font-black tracking-[0.2em] uppercase border rounded-full border-black/10 bg-black/5 text-black"
           >
             AI AUTOMATION
           </motion.span>
@@ -77,7 +77,7 @@ const Hero = () => {
         >
           <motion.p 
             variants={itemVariants}
-            className="text-[10px] md:text-sm text-black/70 mb-4 leading-relaxed font-medium"
+            className="text-[10px] md:text-sm text-black/60 mb-4 leading-relaxed font-medium"
           >
             Custom eCommerce sites, Shopify mastery, High-ROI Ads, and AI-driven automation. 
           </motion.p>
@@ -90,7 +90,7 @@ const Hero = () => {
               <FaWhatsapp size={14} />
               <span>WHATSAPP</span>
             </button>
-            <button className="btn-secondary !text-black !border-black/10 px-4 py-2 text-[8px] flex items-center gap-2 group font-bold tracking-widest border">
+            <button className="btn-secondary px-4 py-2 text-[8px] flex items-center gap-2 group font-bold tracking-widest border">
               <span>CONSULT</span>
               <ArrowRight size={14} />
             </button>
@@ -101,9 +101,9 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.2, duration: 0.5 }}
-            className="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-white/50 backdrop-blur-md rounded-full border border-black/5 shadow-sm"
+            className="mt-4 inline-flex items-center gap-2 px-3 py-1 glass rounded-full border border-black/5 shadow-sm"
           >
-            <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></div>
+            <div className="w-1.5 h-1.5 bg-black rounded-full animate-pulse"></div>
             <span className="text-[6px] font-black tracking-[0.2em] text-black uppercase">42 Agents live</span>
           </motion.div>
         </motion.div>

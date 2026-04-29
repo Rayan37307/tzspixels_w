@@ -65,7 +65,7 @@ const AuraCursor = () => {
     <>
       {/* Main Dot - Follows mouse instantly */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-accent-primary rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-2 h-2 bg-black rounded-full pointer-events-none z-[9999]"
         style={{
           x: mouseX,
           y: mouseY,
@@ -76,7 +76,7 @@ const AuraCursor = () => {
 
       {/* Aura Circle - Follows with delay/spring */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border-2 rounded-full pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-10 h-10 border rounded-full pointer-events-none z-[9998]"
         style={{
           x: auraX,
           y: auraY,
@@ -85,26 +85,17 @@ const AuraCursor = () => {
         }}
         animate={{
           scale: isHovering ? 2.2 : 1,
-          backgroundColor: isHovering ? 'rgba(168, 85, 247, 0.15)' : 'rgba(168, 85, 247, 0)',
-          borderColor: isHovering ? '#3b82f6' : 'rgba(168, 85, 247, 0.5)',
-          boxShadow: isHovering ? '0 0 20px rgba(59, 130, 246, 0.4)' : '0 0 0px rgba(0,0,0,0)',
+          backgroundColor: isHovering ? 'rgba(0, 0, 0, 0.05)' : 'rgba(0, 0, 0, 0)',
+          borderColor: isHovering ? 'rgba(0, 0, 0, 0.4)' : 'rgba(0, 0, 0, 0.2)',
         }}
         transition={{ type: 'spring', stiffness: 200, damping: 25 }}
       >
-        {/* Secondary Glow Ring */}
+        {/* Inner Glow - Subtle Gray */}
         <motion.div 
-          className="absolute inset-[-4px] rounded-full border border-blue-400/20"
-          animate={{
-            scale: isHovering ? 1.1 : 1,
-            opacity: isHovering ? 1 : 0,
-          }}
-        />
-        
-        {/* Inner Glow */}
-        <motion.div 
-          className="absolute inset-0 rounded-full bg-gradient-to-br from-violet-500/20 to-blue-500/20 blur-md"
+          className="absolute inset-0 rounded-full bg-black/5 blur-sm"
           animate={{
             scale: isHovering ? 1.5 : 1,
+            opacity: isHovering ? 1 : 0,
           }}
         />
       </motion.div>

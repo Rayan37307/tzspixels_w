@@ -30,8 +30,8 @@ const HowItWorks = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-7xl font-black mb-6 text-white italic tracking-tighter uppercase">OUR PROCESS</h2>
-          <p className="text-text-secondary text-lg max-w-3xl mx-auto font-medium">
+          <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter uppercase">OUR PROCESS</h2>
+          <p className="text-zinc-500 text-lg max-w-3xl mx-auto font-medium">
             Dominate your market in three powerful steps.
           </p>
         </motion.div>
@@ -46,18 +46,18 @@ const HowItWorks = () => {
               transition={{ delay: index * 0.2, duration: 0.6 }}
               className="flex-1 relative w-full"
             >
-              <div className="text-[12rem] font-black absolute -top-24 -left-8 pointer-events-none opacity-[0.03] text-white italic">
+              <div className="text-[12rem] font-black absolute -top-24 -left-8 pointer-events-none opacity-[0.03] text-black italic">
                 {step.number}
               </div>
               
-              <div className="glass p-10 rounded-3xl relative z-10 h-full border-2 border-white/5 hover:border-accent-primary transition-all group">
-                <div className="w-16 h-16 bg-accent-primary text-white rounded-2xl flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+              <div className="bg-white p-10 rounded-3xl relative z-10 h-full border border-black/5 hover:border-black/20 transition-all group shadow-sm">
+                <div className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform shadow-md">
                   {step.number}
                 </div>
-                <h3 className="text-2xl font-black mb-6 leading-tight text-white uppercase italic tracking-tighter">
+                <h3 className="text-2xl font-black mb-6 leading-tight text-black uppercase italic tracking-tighter">
                   {step.title}
                 </h3>
-                <p className="text-text-secondary leading-relaxed font-medium">
+                <p className="text-zinc-500 leading-relaxed font-medium">
                   {step.desc}
                 </p>
               </div>
@@ -69,7 +69,7 @@ const HowItWorks = () => {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
-                    className="w-12 h-1 bg-accent-primary opacity-20 origin-left"
+                    className="w-12 h-1 bg-black opacity-10 origin-left"
                   ></motion.div>
                 </div>
               )}
@@ -94,11 +94,11 @@ const HowItWorks = () => {
             <div key={i} className="text-center group">
               <motion.div 
                 whileHover={{ scale: 1.2, rotate: -3 }}
-                className="text-5xl md:text-6xl font-black text-accent-primary mb-4 italic tracking-tighter"
+                className="text-5xl md:text-6xl font-black text-black mb-4 italic tracking-tighter"
               >
                 {stat.value}
               </motion.div>
-              <div className="text-[10px] text-text-secondary font-black tracking-[0.3em] uppercase">
+              <div className="text-[10px] text-zinc-400 font-black tracking-[0.3em] uppercase">
                 {stat.label}
               </div>
             </div>

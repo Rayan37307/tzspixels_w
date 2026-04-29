@@ -37,8 +37,8 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           className="flex items-center gap-2 cursor-pointer"
         >
-          <div className="w-10 h-10 bg-accent-primary rounded-lg flex items-center justify-center font-black text-white text-2xl shadow-[0_0_20px_rgba(168,85,247,0.5)]">T</div>
-          <span className={`text-2xl font-black tracking-tighter font-main uppercase transition-colors duration-300 ${scrolled ? 'text-white' : 'text-black'}`}>Tzs Pixels</span>
+          <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center font-black text-white text-2xl shadow-sm">T</div>
+          <span className="text-2xl font-black tracking-tighter font-main uppercase transition-colors duration-300 text-black">Tzs Pixels</span>
         </motion.div>
 
         {/* Desktop Nav */}
@@ -50,10 +50,10 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i + 0.3 }}
-              className={`text-xs font-bold transition-colors relative group tracking-widest ${scrolled ? 'text-text-secondary hover:text-accent-primary' : 'text-black/60 hover:text-accent-primary'}`}
+              className="text-xs font-bold transition-colors relative group tracking-widest text-black/60 hover:text-black"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-primary transition-all group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
             </motion.a>
           ))}
         </div>
@@ -63,23 +63,23 @@ const Navbar = () => {
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`flex items-center gap-2 text-xs font-bold transition-colors tracking-widest ${scrolled ? 'text-white hover:text-accent-primary' : 'text-black hover:text-accent-primary'}`}
+            className="flex items-center gap-2 text-xs font-bold transition-colors tracking-widest text-black/80 hover:text-black"
           >
             <PlayCircle size={18} />
-            <span>WATCH DEMO</span>
+            <span>DEMO</span>
           </motion.button>
           <motion.button 
-            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(168,85,247,0.5)" }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn-primary flex items-center gap-2 py-2.5 px-6 text-xs font-black tracking-widest"
           >
             <FaWhatsapp size={18} />
-            <span>WHATSAPP US</span>
+            <span>WHATSAPP</span>
           </motion.button>
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`lg:hidden transition-colors ${scrolled ? 'text-white' : 'text-black'}`} onClick={() => setIsOpen(!isOpen)}>
+        <button className="lg:hidden text-black" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
@@ -97,20 +97,20 @@ const Navbar = () => {
               <a 
                 key={link.name} 
                 href={link.href} 
-                className="text-lg font-bold text-white hover:text-accent-primary uppercase"
+                className="text-lg font-bold text-black hover:text-black/60 uppercase"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
               </a>
             ))}
-            <div className="flex flex-col gap-4 pt-4 border-t border-glass-border">
-              <button className="flex items-center justify-center gap-2 py-3 border border-glass-border rounded-xl text-white font-bold uppercase text-xs tracking-widest">
+            <div className="flex flex-col gap-4 pt-4 border-t border-black/5">
+              <button className="flex items-center justify-center gap-2 py-3 border border-black/10 rounded-xl text-black font-bold uppercase text-xs tracking-widest">
                 <PlayCircle size={20} />
-                <span>WATCH DEMO</span>
+                <span>DEMO</span>
               </button>
               <button className="btn-primary justify-center text-xs font-black tracking-widest">
                 <FaWhatsapp size={20} />
-                <span>WHATSAPP US</span>
+                <span>WHATSAPP</span>
               </button>
             </div>
           </motion.div>

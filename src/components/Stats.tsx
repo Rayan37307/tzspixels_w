@@ -10,7 +10,7 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-12 border-y border-white/5 bg-bg-secondary/50">
+    <section className="py-12 border-y border-black/5 bg-bg-secondary">
       <div className="container">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
@@ -23,12 +23,11 @@ const Stats = () => {
               className="text-center group"
             >
               <div 
-                className="text-4xl md:text-6xl font-black mb-3 transition-transform group-hover:scale-110 tracking-tighter italic" 
-                style={{ color: stat.color }}
+                className="text-4xl md:text-6xl font-black mb-3 transition-transform group-hover:scale-110 tracking-tighter italic text-black"
               >
                 {stat.value}
               </div>
-              <div className="text-[10px] text-text-secondary font-black tracking-[0.2em] uppercase">
+              <div className="text-[10px] text-zinc-400 font-black tracking-[0.2em] uppercase">
                 {stat.label}
               </div>
             </motion.div>

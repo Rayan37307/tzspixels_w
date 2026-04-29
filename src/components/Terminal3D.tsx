@@ -31,11 +31,11 @@ const Terminal3D = () => {
   return (
     <div className="w-full cursor-grab active:cursor-grabbing" style={{ height: getResponsiveHeight() }}>
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 15], fov: 35 }}>
-        <color attach="background" args={['#050505']} />
+        <color attach="background" args={['#ffffff']} />
         
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
-        <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
+        <ambientLight intensity={1.5} />
+        <pointLight position={[10, 10, 10]} intensity={2} />
+        <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={2} />
 
         <Suspense fallback={null}>
           <PresentationControls
@@ -51,7 +51,7 @@ const Terminal3D = () => {
             </Float>
           </PresentationControls>
         </Suspense>
-        <Environment preset="night" />
+        <Environment preset="city" />
       </Canvas>
     </div>
   );

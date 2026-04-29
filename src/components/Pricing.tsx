@@ -65,7 +65,7 @@ const Pricing = () => {
   };
 
   return (
-    <section id="pricing" className="section-padding bg-bg-secondary/30">
+    <section id="pricing" className="section-padding bg-bg-secondary">
       <div className="container">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -74,8 +74,8 @@ const Pricing = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-7xl font-black mb-6 text-white italic tracking-tighter uppercase">PRICING PLANS</h2>
-          <p className="text-text-secondary text-lg font-medium">Choose the powerhouse plan for your brand.</p>
+          <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter uppercase">PRICING PLANS</h2>
+          <p className="text-zinc-500 text-lg font-medium">Choose the powerhouse plan for your brand.</p>
         </motion.div>
 
         <motion.div 
@@ -90,22 +90,22 @@ const Pricing = () => {
               key={index}
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className={`glass p-10 rounded-[2.5rem] relative flex flex-col pt-20 border-2 transition-all duration-300 ${plan.isPopular ? 'border-accent-primary shadow-[0_0_40px_rgba(168,85,247,0.1)]' : 'border-white/5 hover:border-white/20'}`}
+              className={`bg-white p-10 rounded-[2.5rem] relative flex flex-col pt-20 border transition-all duration-300 shadow-sm hover:shadow-xl ${plan.isPopular ? 'border-black' : 'border-black/5 hover:border-black/20'}`}
             >
               {plan.isPopular && (
                 <motion.div 
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.3 }}
-                  className="popular-badge bg-accent-primary text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full whitespace-nowrap shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+                  className="popular-badge bg-black text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full whitespace-nowrap shadow-lg"
                 >
                   MOST POPULAR
                 </motion.div>
               )}
 
               <div className="mb-10">
-                <h3 className="text-4xl font-black mb-3 text-white italic tracking-tighter">{plan.name}</h3>
-                <p className="text-text-secondary text-xs font-black tracking-widest uppercase">{plan.desc}</p>
+                <h3 className="text-4xl font-black mb-3 text-black italic tracking-tighter">{plan.name}</h3>
+                <p className="text-zinc-400 text-xs font-black tracking-widest uppercase">{plan.desc}</p>
               </div>
 
               <div className="flex-1">
@@ -118,16 +118,16 @@ const Pricing = () => {
                       transition={{ delay: 0.5 + (i * 0.1) }}
                       className="flex items-start gap-4 text-sm font-semibold"
                     >
-                      <div className="mt-1 bg-accent-primary/20 rounded-lg p-1 flex items-center justify-center">
-                        <Check size={16} className="text-accent-primary" />
+                      <div className="mt-1 bg-black/5 rounded-lg p-1 flex items-center justify-center border border-black/5">
+                        <Check size={16} className="text-black" />
                       </div>
-                      <span className="text-text-secondary group-hover:text-white transition-colors">{feature}</span>
+                      <span className="text-zinc-600 transition-colors">{feature}</span>
                     </motion.li>
                   ))}
                 </ul>
               </div>
 
-              <button className={`w-full flex items-center justify-center gap-3 py-5 rounded-2xl font-black text-xs tracking-[0.2em] uppercase transition-all ${plan.isPopular ? 'btn-primary' : 'glass border-2 border-white/10 hover:border-white text-white'}`}>
+              <button className={`w-full flex items-center justify-center gap-3 py-5 rounded-2xl font-black text-xs tracking-[0.2em] uppercase transition-all ${plan.isPopular ? 'btn-primary' : 'border-2 border-black/10 hover:bg-zinc-50 text-black hover:border-black'}`}>
                 <FaWhatsapp size={20} />
                 <span>WHATSAPP US</span>
               </button>
