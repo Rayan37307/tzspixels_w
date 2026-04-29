@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion } from 'framer-motion';
+
 import Terminal3D from './Terminal3D';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
