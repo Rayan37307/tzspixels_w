@@ -1,8 +1,14 @@
-
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import { Quote, Star } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Testimonials = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const testimonials = [
     {
       name: 'MICHAEL CHEN',
@@ -24,41 +30,51 @@ const Testimonials = () => {
     }
   ];
 
+  useGSAP(() => {
+    gsap.from('.testimonial-card', {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top 70%',
+      },
+      y: 100,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 1.2,
+      ease: 'power4.out'
+    });
+
+    gsap.from('.star-item', {
+      scrollTrigger: {
+        trigger: '.stars-container',
+        start: 'top 90%',
+      },
+      scale: 0,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.5,
+      ease: 'back.out(1.7)'
+    });
+  }, { scope: containerRef });
+
   return (
-    <section className="section-padding overflow-hidden bg-bg-primary">
+    <section ref={containerRef} className="section-padding overflow-hidden bg-bg-primary">
       <div className="container">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
+        <div className="text-center mb-20">
           <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter uppercase">CLIENT SUCCESS</h2>
-          <div className="flex justify-center gap-2 mb-4">
+          <div className="stars-container flex justify-center gap-2 mb-4">
             {[1, 2, 3, 4, 5].map(i => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + i * 0.1 }}
-              >
+              <div key={i} className="star-item">
                 <Star size={24} fill="black" stroke="none" className="drop-shadow-sm" />
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-white p-10 rounded-[2rem] relative border border-black/5 hover:border-black/20 transition-all group shadow-sm hover:shadow-xl"
+              className="testimonial-card bg-white p-10 rounded-[2rem] relative border border-black/5 hover:border-black/20 transition-all group shadow-sm hover:shadow-xl hover:-translate-y-2"
             >
               <Quote className="text-black absolute top-8 right-10 opacity-5 group-hover:opacity-10 transition-opacity" size={60} />
               
@@ -75,7 +91,7 @@ const Testimonials = () => {
                   <div className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.2em]">{t.role}</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

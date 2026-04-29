@@ -1,83 +1,84 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const faqs = [
     {
-      q: 'IS TZS PIXELS FOR SMALL BUSINESSES?',
-      a: 'Absolutely. We specialize in helping SMEs automate repetitive tasks and scale their revenue through high-impact marketing and custom tech.',
+      q: 'HOW FAST CAN WE SEE RESULTS?',
+      a: 'Typically, automation takes 2-4 weeks to fully integrate. However, ad performance can often show positive ROI within the first 14 days of scaling.'
     },
     {
-      q: 'HOW LONG DOES SETUP TAKE?',
-      a: 'Standard automation and store integrations usually take 5-10 days. Custom eCommerce builds typically take 3-4 weeks depending on complexity.',
+      q: 'DO YOU PROVIDE ONGOING SUPPORT?',
+      a: 'Yes. We don\'t just build and leave. We offer monthly management for ads, automations, and store updates to ensure constant growth.'
     },
     {
-      q: 'DO YOU PROVIDE GLOBAL SUPPORT?',
-      a: 'Yes. Our AI agents and support teams handle brands across multiple timezones and languages, ensuring 24/7 coverage.',
+      q: 'IS MY BUSINESS DATA SECURE?',
+      a: 'Absolutely. We use industry-standard encryption and secure API connections (n8n/Shopify) to ensure your data stays private and protected.'
     },
     {
-      q: 'HOW DOES THE PRICING WORK?',
-      a: 'We offer tiered subscription plans based on your brand size and requirements. Custom projects are quoted based on the scope of work.',
-    },
-    {
-      q: 'IS MY DATA SECURE?',
-      a: 'Security is our top priority. All data is encrypted and we strictly adhere to global privacy standards. Your business data is never shared.',
-    },
+      q: 'CAN YOU WORK WITH MY EXISTING STORE?',
+      a: 'Yes, we specialize in optimizing existing Shopify and WordPress stores, as well as building custom Next.js frontends for legacy backends.'
+    }
   ];
 
-  return (
-    <section className="section-padding bg-bg-primary">
-      <div className="container max-w-4xl">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter uppercase">QUESTIONS?</h2>
-          <p className="text-zinc-500 text-lg font-medium">Everything you need to know about scaling with us.</p>
-        </motion.div>
+  useGSAP(() => {
+    gsap.from('.faq-item', {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top 80%',
+      },
+      y: 30,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 1,
+      ease: 'power4.out'
+    });
+  }, { scope: containerRef });
 
-        <div className="space-y-6">
+  return (
+    <section id="faq" ref={containerRef} className="section-padding bg-white">
+      <div className="container max-w-4xl">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter uppercase">F.A.Q</h2>
+          <p className="text-zinc-500 text-lg font-medium">Common questions about scaling with Tzs Pixels.</p>
+        </div>
+
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <FAQItem key={index} q={faq.q} a={faq.a} />
+            <div 
+              key={index}
+              className="faq-item border border-black/5 rounded-[2rem] overflow-hidden bg-zinc-50/50 hover:bg-zinc-50 transition-colors"
+            >
+              <button 
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full p-8 flex items-center justify-between text-left group"
+              >
+                <span className="text-lg md:text-xl font-black text-black italic tracking-tighter uppercase">
+                  {faq.q}
+                </span>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center border border-black/10 transition-all ${openIndex === index ? 'bg-black text-white rotate-180' : 'bg-white text-black'}`}>
+                  {openIndex === index ? <Minus size={20} /> : <Plus size={20} />}
+                </div>
+              </button>
+              
+              <div className={`px-8 transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-96 pb-8 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <p className="text-zinc-500 font-medium leading-relaxed max-w-2xl">
+                  {faq.a}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
     </section>
-  );
-};
-
-const FAQItem = ({ q, a }: { q: string; a: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="bg-white border border-black/5 overflow-hidden rounded-3xl transition-all hover:border-black/10 shadow-sm">
-      <button 
-        className="w-full p-8 text-left flex items-center justify-between hover:bg-zinc-50 transition-all"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span className="font-black text-xl text-black italic tracking-tighter uppercase">{q}</span>
-        {isOpen ? <Minus size={24} className="text-black" /> : <Plus size={24} className="text-zinc-400" />}
-      </button>
-      
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
-            <div className="p-8 pt-0 text-zinc-600 leading-relaxed font-medium border-t border-black/5">
-              {a}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
   );
 };
 

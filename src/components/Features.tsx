@@ -1,11 +1,18 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import { 
   Zap, Box, Send, 
   Image as ImageIcon, Layout, Globe, BarChart3, ShoppingCart
 } from 'lucide-react';
 import { cloneElement, type ReactElement } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Features = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const features = [
     {
       title: 'Custom eCommerce Development',
@@ -57,64 +64,40 @@ const Features = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants: any = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
+  useGSAP(() => {
+    gsap.from('.feature-card', {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top 90%',
+        once: true
+      },
+      y: 40,
+      opacity: 0,
+      stagger: 0.05,
+      duration: 0.8,
+      ease: 'power3.out'
+    });
+  }, { scope: containerRef });
 
   return (
-    <section id="services" className="section-padding relative bg-white">
+    <section id="services" ref={containerRef} className="section-padding relative bg-white">
       <div className="container">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter">WHAT WE DO</h2>
+        <div className="text-center mb-20">
+          <h2 className="section-title text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter">WHAT WE DO</h2>
           <p className="text-zinc-500 text-lg max-w-3xl mx-auto font-medium">
             Everything your eCommerce brand needs to scale—unified in one powerhouse platform.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
-              whileHover={{ y: -10, transition: { duration: 0.2 } }}
-              className="glass-card p-8 relative overflow-hidden group border-2 border-black/5 hover:border-black/20"
+              className="feature-card bg-white p-8 relative overflow-hidden group border-2 border-black/5 hover:border-black/20 rounded-[2rem] transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-xl"
             >
-              <motion.div 
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="w-16 h-16 rounded-2xl bg-zinc-50 flex items-center justify-center mb-8 border border-black/5"
-              >
+              <div className="w-16 h-16 rounded-2xl bg-zinc-50 flex items-center justify-center mb-8 border border-black/5 group-hover:scale-110 group-hover:rotate-6 transition-transform">
                 {cloneElement(feature.icon as ReactElement, { size: 32 } as any)}
-              </motion.div>
+              </div>
               
               <h3 className="text-xl font-black mb-4 transition-colors group-hover:text-zinc-600 text-black leading-tight uppercase">
                 {feature.title}
@@ -130,9 +113,9 @@ const Features = () => {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

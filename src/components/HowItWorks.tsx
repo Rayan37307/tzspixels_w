@@ -1,7 +1,14 @@
-
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const HowItWorks = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const steps = [
     {
       number: '01',
@@ -20,31 +27,47 @@ const HowItWorks = () => {
     },
   ];
 
+  useGSAP(() => {
+    gsap.from('.step-card', {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top 70%',
+      },
+      x: (index) => (index % 2 === 0 ? -100 : 100),
+      opacity: 0,
+      stagger: 0.2,
+      duration: 1,
+      ease: 'expo.out'
+    });
+
+    gsap.from('.stat-item', {
+      scrollTrigger: {
+        trigger: '.stats-grid',
+        start: 'top 90%',
+      },
+      scale: 0.5,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: 'back.out(1.7)'
+    });
+  }, { scope: containerRef });
+
   return (
-    <section id="how-it-works" className="section-padding bg-bg-secondary relative overflow-hidden">
+    <section id="how-it-works" ref={containerRef} className="section-padding bg-bg-secondary relative overflow-hidden">
       <div className="container">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
+        <div className="text-center mb-20">
           <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter uppercase">OUR PROCESS</h2>
           <p className="text-zinc-500 text-lg max-w-3xl mx-auto font-medium">
             Dominate your market in three powerful steps.
           </p>
-        </motion.div>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-12 items-center justify-center">
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="flex-1 relative w-full"
+              className="step-card flex-1 relative w-full"
             >
               <div className="text-[12rem] font-black absolute -top-24 -left-8 pointer-events-none opacity-[0.03] text-black italic">
                 {step.number}
@@ -64,46 +87,33 @@ const HowItWorks = () => {
 
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2 z-20">
-                  <motion.div 
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
-                    className="w-12 h-1 bg-black opacity-10 origin-left"
-                  ></motion.div>
+                  <div className="w-12 h-1 bg-black opacity-10 origin-left"></div>
                 </div>
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Growth Stats */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="mt-32 grid grid-cols-2 lg:grid-cols-4 gap-12"
-        >
+        <div className="stats-grid mt-32 grid grid-cols-2 lg:grid-cols-4 gap-12">
           {[
             { value: '90+', label: 'GLOBAL BRANDS' },
             { value: '5K+', label: 'HOURS SAVED' },
             { value: '85%', label: 'AUTOMATION RATE' },
             { value: 'NO.1', label: 'ECOM AGENCY' }
           ].map((stat, i) => (
-            <div key={i} className="text-center group">
-              <motion.div 
-                whileHover={{ scale: 1.2, rotate: -3 }}
-                className="text-5xl md:text-6xl font-black text-black mb-4 italic tracking-tighter"
+            <div key={i} className="stat-item text-center group">
+              <div 
+                className="text-5xl md:text-6xl font-black text-black mb-4 italic tracking-tighter transition-transform group-hover:scale-110"
               >
                 {stat.value}
-              </motion.div>
+              </div>
               <div className="text-[10px] text-zinc-400 font-black tracking-[0.3em] uppercase">
                 {stat.label}
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -13,6 +13,11 @@ import AuraCursor from './components/AuraCursor';
 import RobotShowcase from './components/RobotShowcase';
 import Preloader from './components/Preloader';
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -21,15 +26,17 @@ function App() {
       touchMultiplier: 2,
     });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    lenis.on('scroll', ScrollTrigger.update);
 
-    requestAnimationFrame(raf);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
       lenis.destroy();
+      gsap.ticker.remove(() => {});
     };
   }, []);
 

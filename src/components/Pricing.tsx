@@ -1,109 +1,93 @@
-
-import { motion } from 'framer-motion';
-import { FaWhatsapp } from 'react-icons/fa';
+import { useRef } from 'react';
 import { Check } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Pricing = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const plans = [
     {
       name: 'STARTER',
       desc: 'FOR GROWING BRANDS',
+      price: '$499',
       features: [
         'AI Support Agent',
-        'Inbox Automation',
-        'Shopify/WP Setup',
-        'Stock Automation',
-        'Up to 5 Team Members',
+        'Basic n8n Automation',
+        '5 High-Impact Ad Creatives',
+        'Shopify Optimization',
+        'WhatsApp Integration'
       ],
-      isPopular: false,
+      isPopular: false
     },
     {
-      name: 'GROWTH',
-      desc: 'MOST ADVANCED SOLUTION',
+      name: 'PRO',
+      desc: 'OUR MOST POWERFUL PLAN',
+      price: '$999',
       features: [
         'Everything in Starter',
-        'Performance Ads Support',
-        'Custom Workflow Builder',
-        'Advanced Analytics',
-        'Priority Support',
+        'Custom Next.js Landing Page',
+        'Full CRM Automation',
+        '15 Premium Ad Creatives',
+        'Ad Account Management'
       ],
-      isPopular: true,
+      isPopular: true
     },
     {
       name: 'ENTERPRISE',
-      desc: 'CUSTOM BUILT FOR SCALE',
+      desc: 'FOR MARKET DOMINATION',
+      price: 'CUSTOM',
       features: [
-        'Everything in Growth',
-        'Custom Next.js Store',
-        'Full Brand Nurturing',
-        'Dedicated Manager',
-        'Custom Integration',
+        'Everything in Pro',
+        'Bespoke AI Solutions',
+        'Inventory/POS Sync',
+        'Unlimited Creatives',
+        'Dedicated Brand Manager'
       ],
-      isPopular: false,
-    },
+      isPopular: false
+    }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants: any = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.7
-      }
-    }
-  };
+  useGSAP(() => {
+    gsap.from('.pricing-card', {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top 85%',
+        once: true
+      },
+      y: 40,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 0.8,
+      ease: 'power3.out'
+    });
+  }, { scope: containerRef });
 
   return (
-    <section id="pricing" className="section-padding bg-bg-secondary">
+    <section id="pricing" ref={containerRef} className="section-padding bg-bg-secondary">
       <div className="container">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
+        <div className="text-center mb-20">
           <h2 className="text-5xl md:text-7xl font-black mb-6 text-black italic tracking-tighter uppercase">PRICING PLANS</h2>
           <p className="text-zinc-500 text-lg font-medium">Choose the powerhouse plan for your brand.</p>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              className={`bg-white p-10 rounded-[2.5rem] relative flex flex-col pt-20 border transition-all duration-300 shadow-sm hover:shadow-xl ${plan.isPopular ? 'border-black' : 'border-black/5 hover:border-black/20'}`}
+              className={`pricing-card bg-white p-10 rounded-[2.5rem] relative flex flex-col pt-20 border transition-all duration-300 shadow-sm hover:shadow-xl ${plan.isPopular ? 'border-black' : 'border-black/5 hover:border-black/20'} group hover:-translate-y-2`}
             >
               {plan.isPopular && (
-                <motion.div 
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.3 }}
-                  className="popular-badge bg-black text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full whitespace-nowrap shadow-lg"
-                >
+                <div className="popular-badge bg-black text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full whitespace-nowrap shadow-lg absolute top-8 left-1/2 -translate-x-1/2">
                   MOST POPULAR
-                </motion.div>
+                </div>
               )}
 
-              <div className="mb-10">
+              <div className="mb-10 text-center">
                 <h3 className="text-4xl font-black mb-3 text-black italic tracking-tighter">{plan.name}</h3>
                 <p className="text-zinc-400 text-xs font-black tracking-widest uppercase">{plan.desc}</p>
               </div>
@@ -111,18 +95,15 @@ const Pricing = () => {
               <div className="flex-1">
                 <ul className="space-y-5 mb-12">
                   {plan.features.map((feature, i) => (
-                    <motion.li 
+                    <li 
                       key={i} 
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 + (i * 0.1) }}
                       className="flex items-start gap-4 text-sm font-semibold"
                     >
                       <div className="mt-1 bg-black/5 rounded-lg p-1 flex items-center justify-center border border-black/5">
                         <Check size={16} className="text-black" />
                       </div>
-                      <span className="text-zinc-600 transition-colors">{feature}</span>
-                    </motion.li>
+                      <span className="text-zinc-600 transition-colors group-hover:text-black">{feature}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -131,9 +112,9 @@ const Pricing = () => {
                 <FaWhatsapp size={20} />
                 <span>WHATSAPP US</span>
               </button>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
